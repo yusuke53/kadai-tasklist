@@ -7,7 +7,7 @@
             </aside>
             <div class="col-xs-8">
                 @if (count($tasks) > 0)
-                    @include('tasklistss.tasklists', ['tasklists' => $tasklists])
+                    @include('tasklists.tasklists', ['tasklists' => $tasklists])
                 @endif
             </div>
         </div>

@@ -7,13 +7,18 @@
         </div>
         <div class="media-body">
             <div>
-                {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} <span class="text-muted">posted at {{ $task->created_at }}</span>
+                {!! link_to_route('tasks.edit', $user->name, ['id' => $user->id]) !!} <span class="text-muted">posted at {{ $task->created_at }}</span>
             </div>
             <div>
                 <p>ステータス：{!! nl2br(e($task->status)) !!}</p>
                 <p>タスク：{!! nl2br(e($task->content)) !!}</p>
             </div>
             <div>
+                @if (Auth::user()->id == $task->user_id)
+                    {!! Form::open(['route' => ['tasks.edit', $task->id], 'method' => 'get']) !!}
+                    {!! Form::submit('Edit', ['class' => 'btn btn-success btn-xs']) !!}
+                    {!! Form::close() !!}
+                @endif
                 @if (Auth::user()->id == $task->user_id)
                     {!! Form::open(['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}

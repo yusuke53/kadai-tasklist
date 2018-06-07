@@ -19,7 +19,7 @@
                 <li><a href="#">Followers</a></li>
             </ul>
             @if (Auth::user()->id == $user->id)
-                  {!! Form::open(['route' => 'tasks.store']) !!}
+                  {!! Form::open(['action' => 'TasksController@store']) !!}
                       <div class="form-group">
                           <p>status</p>{!! Form::textarea('status', old('status'), ['class' => 'form-control', 'rows' => '2']) !!}
                           <p>task</p>{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
